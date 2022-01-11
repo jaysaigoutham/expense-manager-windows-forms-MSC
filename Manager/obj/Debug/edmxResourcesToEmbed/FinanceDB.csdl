@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataBaseContactModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DataBaseContactEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Transactions" EntityType="DataBaseContactModel.Transaction" />
+    <EntitySet Name="Contacts" EntityType="DataBaseContactModel.Contact" />
+    <AssociationSet Name="TransactionContact" Association="DataBaseContactModel.TransactionContact">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Amount" Type="String" Nullable="false" />
+    <Property Name="Comment" Type="String" Nullable="false" />
+    <Property Name="Date" Type="String" Nullable="false" />
+    <NavigationProperty Name="Contacts" Relationship="DataBaseContactModel.TransactionContact" FromRole="Transaction" ToRole="Contact" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" />
+    <Property Name="Comment" Type="String" Nullable="false" />
+    <NavigationProperty Name="Transaction" Relationship="DataBaseContactModel.TransactionContact" FromRole="Contact" ToRole="Transaction" />
+  </EntityType>
+  <Association Name="TransactionContact">
+    <End Type="DataBaseContactModel.Transaction" Role="Transaction" Multiplicity="1" />
+    <End Type="DataBaseContactModel.Contact" Role="Contact" Multiplicity="*" />
+  </Association>
+</Schema>

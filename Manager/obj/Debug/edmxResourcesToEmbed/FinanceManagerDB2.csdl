@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinanceAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FinanceAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Transactions" EntityType="FinanceAppModel.Transaction" />
+    <EntitySet Name="Contacts" EntityType="FinanceAppModel.Contact" />
+    <AssociationSet Name="TransactionContact" Association="FinanceAppModel.TransactionContact">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Comments" Type="String" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Contacts" Relationship="FinanceAppModel.TransactionContact" FromRole="Transaction" ToRole="Contact" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" />
+    <Property Name="Comment" Type="String" Nullable="false" />
+    <NavigationProperty Name="Transaction" Relationship="FinanceAppModel.TransactionContact" FromRole="Contact" ToRole="Transaction" />
+  </EntityType>
+  <Association Name="TransactionContact">
+    <End Type="FinanceAppModel.Transaction" Role="Transaction" Multiplicity="1" />
+    <End Type="FinanceAppModel.Contact" Role="Contact" Multiplicity="*" />
+  </Association>
+</Schema>

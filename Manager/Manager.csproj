@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF84A3F5-6F75-4BE7-A34E-C2BBC43F8646}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Manager</RootNamespace>
+    <AssemblyName>Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\dll\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contact.cs">
+      <DependentUpon>FinaceManagerADODB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUI\BulkContactAddControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUI\BulkContactAddControl.Designer.cs">
+      <DependentUpon>BulkContactAddControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUI\ContactRowControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUI\ContactRowControl.Designer.cs">
+      <DependentUpon>ContactRowControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUI\CustomSubmitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DSFinance.cs">
+      <DependentUpon>DSFinance.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSFinance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSFinance.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>FinaceManagerADODB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinaceManagerADODB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinaceManagerADODB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinaceManagerADODB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinaceManagerADODB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinaceManagerADODB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinaceManagerADODB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Finance.cs" />
+    <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transaction.cs">
+      <DependentUpon>FinaceManagerADODB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utillities\EventEnum.cs" />
+    <Compile Include="Utillities\TransactionEnum.cs" />
+    <Compile Include="Views\AddContactsDynamicView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddContactsDynamicView.Designer.cs">
+      <DependentUpon>AddContactsDynamicView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppointmentRecordFromView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AppointmentRecordFromView.Designer.cs">
+      <DependentUpon>AppointmentRecordFromView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ContactListView.Designer.cs">
+      <DependentUpon>ContactListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactRecordFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ContactRecordFormView.Designer.cs">
+      <DependentUpon>ContactRecordFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EventWeekView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EventWeekView.Designer.cs">
+      <DependentUpon>EventWeekView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FinanceStatusViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FinanceStatusViewForm.Designer.cs">
+      <DependentUpon>FinanceStatusViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HomeView.Designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskRecordFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TaskRecordFormView.Designer.cs">
+      <DependentUpon>TaskRecordFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransactionListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TransactionListView.Designer.cs">
+      <DependentUpon>TransactionListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransactionRecordFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TransactionRecordFormView.Designer.cs">
+      <DependentUpon>TransactionRecordFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateContactFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateContactFormView.Designer.cs">
+      <DependentUpon>UpdateContactFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateTransactionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateTransactionView.Designer.cs">
+      <DependentUpon>UpdateTransactionView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomUI\BulkContactAddControl.resx">
+      <DependentUpon>BulkContactAddControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUI\ContactRowControl.resx">
+      <DependentUpon>ContactRowControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\AddContactsDynamicView.resx">
+      <DependentUpon>AddContactsDynamicView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AppointmentRecordFromView.resx">
+      <DependentUpon>AppointmentRecordFromView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContactListView.resx">
+      <DependentUpon>ContactListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContactRecordFormView.resx">
+      <DependentUpon>ContactRecordFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EventWeekView.resx">
+      <DependentUpon>EventWeekView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FinanceStatusViewForm.resx">
+      <DependentUpon>FinanceStatusViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HomeView.resx">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TaskRecordFormView.resx">
+      <DependentUpon>TaskRecordFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TransactionListView.resx">
+      <DependentUpon>TransactionListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TransactionRecordFormView.resx">
+      <DependentUpon>TransactionRecordFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateContactFormView.resx">
+      <DependentUpon>UpdateContactFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateTransactionView.resx">
+      <DependentUpon>UpdateTransactionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DSFinance.xsc">
+      <DependentUpon>DSFinance.xsd</DependentUpon>
+    </None>
+    <None Include="DSFinance.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSFinance.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSFinance.xss">
+      <DependentUpon>DSFinance.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="FinaceManagerADODB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FinaceManagerADODB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FinaceManagerADODB.edmx.diagram">
+      <DependentUpon>FinaceManagerADODB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\managerbg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BACKGROUND.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bokeh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FinaceManagerADODB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FinaceManagerADODB.Context.cs</LastGenOutput>
+      <DependentUpon>FinaceManagerADODB.edmx</DependentUpon>
+    </Content>
+    <Content Include="FinaceManagerADODB.edmx.sql" />
+    <Content Include="FinaceManagerADODB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FinaceManagerADODB.cs</LastGenOutput>
+      <DependentUpon>FinaceManagerADODB.edmx</DependentUpon>
+    </Content>
+    <None Include="Resources\appointment.png" />
+    <None Include="Resources\task.png" />
+    <None Include="Resources\expense.png" />
+    <None Include="Resources\income.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
